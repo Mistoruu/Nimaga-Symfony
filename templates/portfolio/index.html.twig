@@ -95,6 +95,17 @@
             font-weight: 600;
             margin-bottom: 1rem;
         }
+        .link {
+            margin: 1rem;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .link p:hover{
+            color: var(--primary);
+        }
         footer {
             background: var(--dark);
             color: white;
@@ -143,21 +154,22 @@
         <h2 class="section-title">Mes Projets</h2>
         <div class="grid">
             <div class="card">
-                <span class="badge">Symfony</span>
+                <span class="badge">PHP</span>
                 <h3>E-commerce App</h3>
                 <p>Développement d'une plateforme complète avec gestion de panier, paiements Stripe et interface d'administration.</p>
             </div>
             <div class="card">
-                <span class="badge">API Platform</span>
-                <h3>Task Manager API</h3>
-                <p>Une API REST robuste pour la gestion de projets collaboratifs, sécurisée avec JWT.</p>
+                <span class="badge">C#</span>
+                <h3>Participation GameJam</h3>
+                <p>Développement d'un jeu en un weekend dans le cadre du ScoreJam37</p>
             </div>
             <div class="card">
-                <span class="badge">JavaScript</span>
-                <h3>Dashboard Interactif</h3>
-                <p>Visualisation de données en temps réel utilisant Chart.js et des WebSockets.</p>
+                <span class="badge">Python</span>
+                <h3>Automatisation de tâches en Python<</h3>
+                <p>Automatisation de tâches en Python sur le jeu Dragon Ball Z: Dokkan Battle!</p>
             </div>
         </div>
+        <a href="{{ path(name= 'portfolio_projets') }}" class="link"><p>Voir tout mes projets</p></a>
     </div>
 </section>
 

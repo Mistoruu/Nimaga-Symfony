@@ -122,6 +122,16 @@
             gap: 0.5rem;
             margin-top: 1rem;
         }
+        /* Style manquant pour les badges dans ton CSS d'origine,
+           je l'ajoute pour qu'ils soient visibles comme sur ton rendu */
+        .badge {
+            background: #e2e8f0;
+            color: var(--dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
         footer {
             background: var(--dark);
             color: white;
@@ -138,10 +148,10 @@
             <h1>Eliott Maillé</h1>
             <p>Développeur Fullstack & Passionné de Symfony</p>
             <nav>
-                <a href={{ path(name= 'app_portfolio') }}>Home</a>
-                <a href={{ path(name= 'portfolio_CV') }}>CV</a>
-                <a href={{ path(name= 'portfolio_projets') }}>Projets</a>
-                <a href={{ path(name= 'portfolio_contact') }}>Contact</a>
+                <a href="{{ path('app_portfolio') }}">Home</a>
+                <a href="{{ path('portfolio_CV') }}">CV</a>
+                <a href="{{ path('portfolio_projets') }}">Projets</a>
+                <a href="{{ path('portfolio_contact') }}">Contact</a>
             </nav>
         </div>
     </header>
@@ -155,103 +165,45 @@
         </div>
     </section>
 
-    <!-- Game Jam -->
-    <section class="project-section">
-        <div class="container">
-            <div class="project-details">
-                <div class="project-header">
-                    <div>
-                        <span class="badge">Game Jam</span>
-                        <h3 class="project-title">Participation GameJam</h3>
+    {# Début de la zone dynamique #}
+    {% for project in projects %}
+        <section class="project-section">
+            <div class="container">
+                <div class="project-details">
+                    <div class="project-header">
+                        <div>
+                            {% if project.badge %}
+                            <span class="badge">{{ project.badge }}</span>
+                            {% endif %}
+                            <h3 class="project-title">{{ project.title }}</h3>
+                        </div>
+                        <a href="{{ project.url }}" class="btn-repo" target="_blank">
+                            <span class="repo-icon">GH</span> {{ project.url_label }}
+                        </a>
                     </div>
-                    <a href="https://mistoru.itch.io/dobrazill" class="btn-repo">
-                        <span class="repo-icon">GH</span> Voir la page itch.io
-                    </a>
-                </div>
-                <div class="project-content">
-                    <p>
-                        Développement intensif d'un jeu vidéo réalisé en un week-end lors d'un événement collaboratif. Ce projet a nécessité une réactivité forte et une excellente gestion des priorités pour transformer une idée conceptuelle en un prototype jouable dans un temps très restreint.
-                    </p>
-                    <h4>Points clés :</h4>
-                    <ul>
-                        <li>Conception et implémentation des mécaniques de gameplay principales.</li>
-                        <li>Travail d'équipe en flux tendu avec des graphistes et sound designers.</li>
-                        <li>Optimisation des ressources pour garantir la fluidité sur navigateur.</li>
-                    </ul>
-                    <div class="tech-list">
-                        <span class="badge">Godot</span>
-                        <span class="badge">C#</span>
-                        <span class="badge">Game Design</span>
-                        <span class="badge">Aseprite</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="project-content">
+                        <p>{{ project.description }}</p>
 
-    <!-- Python Automation -->
-    <section class="project-section">
-        <div class="container">
-            <div class="project-details">
-                <div class="project-header">
-                    <div>
-                        <span class="badge">Python</span>
-                        <h3 class="project-title">Automatisation de tâches</h3>
-                    </div>
-                    <a href="https://github.com/Mistoruu/Dokkan-EZA-Automation" class="btn-repo">
-                        <span class="repo-icon">GH</span> Voir le Repo
-                    </a>
-                </div>
-                <div class="project-content">
-                    <p>
-                        Conception d'une suite de scripts Python dédiés à l'automatisation de complétion de niveau de type "EZA" sur le jeu Dragon Ball Z: Dokkan Battle ! Ce projet visait à compléter en boucle un niveau pour automatiser la collecte de récompenses dans le jeu.
-                    </p>
-                    <h4>Points clés :</h4>
-                    <ul>
-                        <li>Automatisation de la complétion</li>
-                        <li>CLI basique</li>
-                    </ul>
-                    <div class="tech-list">
-                        <span class="badge">Python 3</span>
-                        <span class="badge">Pyautogui</span>
-                        <span class="badge">Automation</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        {% if project.points is defined and project.points|length > 0 %}
+                            <h4>Points clés :</h4>
+                            <ul>
+                                {% for point in project.points %}
+                                    <li>{{ point }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
 
-    <!-- BTS SIO -->
-    <section class="project-section">
-        <div class="container">
-            <div class="project-details">
-                <div class="project-header">
-                    <div>
-                        <span class="badge">BTS SIO</span>
-                        <h3 class="project-title">Projet de BTS SIO</h3>
-                    </div>
-                    <a href="https://github.com/Mistoruu/E6-Leger" class="btn-repo">
-                        <span class="repo-icon">GH</span> Voir le Repo
-                    </a>
-                </div>
-                <div class="project-content">
-                    <p>
-                        Développement d'un site web e-commerce répondant aux exigences d'un cahier des charges professionnel dans le cadre du diplôme BTS SIO. L'application permet de centraliser les données métiers et d'offrir une interface intuitive aux utilisateurs finaux.
-                    </p>
-                    <h4>Points clés :</h4>
-                    <ul>
-                        <li>Modélisation rigoureuse de la base de données (UML, Merise).</li>
-                        <li>Implémentation d'un système d'authentification et de gestion des droits utilisateurs (RBAC).</li>
-                        <li>Génération automatique de rapports et de documents PDF.</li>
-                    </ul>
-                    <div class="tech-list">
-                        <span class="badge">PHP</span>
-                        <span class="badge">MySQL</span>
+                        <div class="tech-list">
+                            {% for tech in project.techs %}
+                                <span class="badge">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endfor %}
+    {# Fin de la zone dynamique #}
 
     <section id="contact-cta" style="background: white;">
         <div class="container">
