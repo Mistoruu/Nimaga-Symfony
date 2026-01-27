@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio - Eliott Maillé{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        section {
+            padding: 4rem 0;
+        }
+        .hero {
+            text-align: center;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<header>
+    <div class="container">
+        <h1>Eliott Maillé</h1>
+        <p>Développeur Fullstack & Passionné de Symfony</p>
+        <nav>
+            <a href={{ path(name= 'app_portfolio') }}>Home</a>
+            <a href={{ path(name= 'portfolio_CV') }}>CV</a>
+            <a href={{ path(name= 'portfolio_projets') }}>Projets</a>
+            <a href={{ path(name= 'portfolio_contact') }}>Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section id="hero" class="hero">
+    <div class="container">
+        <h2>Bienvenue sur mon Portfolio</h2>
+        <p>Je crée des applications web modernes, performantes et centrées sur l'utilisateur.</p>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">CV</h2>
+        <div class="card">
+            <p>
+                Passionné par le développement web depuis plusieurs années, je me spécialise dans la création d'écosystèmes robustes avec <strong>Symfony</strong>.
+                Mon approche combine rigueur technique et créativité pour répondre aux défis numériques d'aujourd'hui.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="projects" style="background: #f1f5f9;">
+    <div class="container">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Symfony</span>
+                <h3>E-commerce App</h3>
+                <p>Développement d'une plateforme complète avec gestion de panier, paiements Stripe et interface d'administration.</p>
+            </div>
+            <div class="card">
+                <span class="badge">API Platform</span>
+                <h3>Task Manager API</h3>
+                <p>Une API REST robuste pour la gestion de projets collaboratifs, sécurisée avec JWT.</p>
+            </div>
+            <div class="card">
+                <span class="badge">JavaScript</span>
+                <h3>Dashboard Interactif</h3>
+                <p>Visualisation de données en temps réel utilisant Chart.js et des WebSockets.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="card" style="text-align: center;">
+            <p>Vous avez un projet en tête ou souhaitez simplement échanger ?</p>
+            <p><strong>Email :</strong> contact@eliott-maille.fr</p>
+            <p><strong>LinkedIn :</strong> linkedin.com/in/eliott-maille</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; {{ "now"|date("Y") }} Eliott Maillé. Tous droits réservés.</p>
+    </div>
+</footer>
+{% endblock %}

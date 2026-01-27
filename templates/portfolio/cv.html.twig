@@ -1,0 +1,275 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio - Eliott Maillé{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: var(--primary);
+        }
+        section {
+            padding: 4rem 0;
+        }
+        .hero {
+            text-align: center;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 10px auto;
+        }
+        section {
+            padding: 4rem 0;
+        }
+        section:nth-child(even) {
+            background-color: #ffffff;
+        }
+        section:nth-child(odd) {
+            background-color: #f8fafc;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline-item {
+            padding: 1.5rem;
+            border-left: 3px solid var(--primary);
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 24px;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0 0;
+        }
+        .skill-badge {
+            background: #e2e8f0;
+            color: var(--dark);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="container">
+            <nav>
+                <a href={{ path(name= 'app_portfolio') }}>Home</a>
+                <a href={{ path(name= 'portfolio_CV') }}>CV</a>
+                <a href={{ path(name= 'portfolio_projets') }}>Projets</a>
+                <a href={{ path(name= 'portfolio_contact') }}>Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Mon Profil</h2>
+            <div class="card">
+                <p>
+                    Passionné par le développement web depuis plusieurs années, je me spécialise dans la création d'écosystèmes robustes avec <strong>Symfony</strong>.
+                    Mon approche combine rigueur technique et créativité pour répondre aux défis numériques d'aujourd'hui.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Parcours Académique</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">2025 - 2026</span>
+                    <h3>Bachelor Développeur Web</h3>
+                    <p><strong>H3 Hitema, Paris 15</strong></p>
+                    <p>Spécialisation dans les technologies modernes et l'architecture logicielle.</p>
+                    <ul class="skills-list">
+                        <li class="skill-badge">Symfony</li>
+                        <li class="skill-badge">Docker</li>
+                        <li class="skill-badge">DevOps</li>
+                        <li class="skill-badge">Architecture Microservices</li>
+                        <li class="skill-badge">CI/CD</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2023 - 2025</span>
+                    <h3>BTS SIO option SLAM</h3>
+                    <p><strong>H3 Hitema, Paris 15</strong></p>
+                    <p>Solutions Logicielles et Applications Métier. Apprentissage des bases solides du développement.</p>
+                    <ul class="skills-list">
+                        <li class="skill-badge">POO</li>
+                        <li class="skill-badge">PHP</li>
+                        <li class="skill-badge">Python</li>
+                        <li class="skill-badge">SQL</li>
+                        <li class="skill-badge">JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">2023</span>
+                    <h3>Baccalauréat Scientifique</h3>
+                    <p><strong>Lycée Guy de Maupassant, Colombes</strong></p>
+                    <p>Spécialité Mathématiques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Expériences Professionnelles</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">Septembre 2025 - Août 2026</span>
+                    <h3>Développeur PHP (Alternance)</h3>
+                    <p><strong>Proform</strong></p>
+                    <ul>
+                        <li>Maintenance évolutive et corrective du CRM interne.</li>
+                        <li>Automatisation de tâches récurrentes via des scripts PHP.</li>
+                        <li>Conception et intégration de nouvelles fonctionnalités métiers.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <span class="timeline-date">Décembre 2024 - Février 2025</span>
+                    <h3>Développeur Full Stack (Stage)</h3>
+                    <p><strong>Nowledgeable</strong></p>
+                    <ul>
+                        <li>Participation au développement de la plateforme web.</li>
+                        <li>Optimisation de l'interface utilisateur (UI/UX).</li>
+                        <li>Collaboration en mode Agile au sein de l'équipe technique.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="card" style="text-align: center;">
+                <p>Vous avez un projet en tête ou souhaitez simplement échanger ?</p>
+                <p><strong>Email :</strong> contact@eliott-maille.fr</p>
+                <p><strong>LinkedIn :</strong> linkedin.com/in/eliott-maille</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ "now"|date("Y") }} Eliott Maillé. Tous droits réservés.</p>
+        </div>
+    </footer>
+{% endblock %}
