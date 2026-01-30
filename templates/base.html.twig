@@ -9,8 +9,17 @@
 
     </head>
     <body>
-        {% block body %}
+
+    {% block body %}
         <h1>Bienvenue Sur Symfony !</h1>
         {% endblock %}
+    <footer>
+        <nav>
+            <a href="{{ path(name="app_main") }}">Exos doc 1</a>
+            <a href="{{ path(name="blog_list") }}">Exos doc 2</a>
+            <a href="{{ path(name="app_article_index") }}">Exos doc 3</a>
+            <a href="{{ path(name="app_portfolio") }}">Portfolio</a>
+        </nav>
+    </footer>
     </body>
 </html>
