@@ -1,0 +1,128 @@
+<style>
+    /* templates/base.html.twig */
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --danger-color: #e74c3c;
+        --text-color: #2c3e50;
+        --bg-color: #f4f7f6;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* Tableaux */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f8f9fa;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Boutons et Liens */
+    .btn, a {
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        display: inline-block;
+        transition: 0.3s;
+        cursor: pointer;
+        border: none;
+    }
+
+    a[href*="show"], .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    a[href*="edit"], .btn-success {
+        background-color: var(--secondary-color);
+        color: white;
+    }
+
+    a[href*="new"], a[href*="published"], a[href*="recent"] {
+        background-color: #34495e;
+        color: white;
+        margin-right: 5px;
+    }
+
+    form button {
+        background-color: var(--danger-color);
+        color: white;
+    }
+
+    a:hover, button:hover {
+        opacity: 0.8;
+    }
+
+    .navigation {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navigation span {
+        margin: 0 5px;
+    }
+
+    form div {
+        margin-bottom: 15px;
+    }
+
+    input[type="text"], textarea, select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .search-form {
+        display: flex;
+        gap: 10px;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        align-items: center;
+    }
+
+    .search-form input, .search-form select {
+        flex: 1;
+        padding: 8px;
+    }
+</style>
