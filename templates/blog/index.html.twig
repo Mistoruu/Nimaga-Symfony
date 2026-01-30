@@ -1,20 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block stylesheets %}
+    <style>
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 20px;
+        }
 
+        .travel-card {
+            border: none;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .travel-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+        }
+
+        .continent-tag {
+            color: #3498db;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .badge-new {
+            background-color: #27ae60;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+{% endblock %}
+{% set user_role = 'user' %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/eliott/projets/cours/hitema-symfony/intro_symfony/src/Controller/BlogController.php</code></li>
-        <li>Your template at <code>/home/eliott/projets/cours/hitema-symfony/intro_symfony/templates/blog/index.html.twig</code></li>
-    </ul>
-</div>
+    <h1 class="text-center">Nos Destinations</h1>
+    <div class="blog-container">
+        {% for id, article in articles %}
+            <div class="travel-card">
+                <div style="padding: 20px;">
+                    <span class="continent-tag">{{ article.continent }}</span>
+                    <h3>{{ article.titre }}</h3>
+                    {% if article.date|date('Y-m-d') > date('-7 days')|date('Y-m-d') %}
+                        <span class="badge-new">NOUVEAU</span>
+                    {% endif %}
+                    <p>{{ article.description|slice(0, 60) }}...</p>
+                    {% if user_role == 'admin' %}
+                        <a href="#" class="btn-edit" style="color: #e67e22; margin-left: 10px; font-weight: bold;">
+                            ⚙️ Modifier
+                        </a>
+                    {% endif %}
+                    <a href="{{ path('blog_show', {'id': id}) }}">Voir l'itinéraire</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert-info">
+                <p> Aucun voyage n'est disponible pour le moment. Revenez plus tard !</p>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
